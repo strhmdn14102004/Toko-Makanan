@@ -39,18 +39,18 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
               ),
               const SizedBox(height: 40),
               Text(
-                "Find your Comfort \nFood here",
+                "Temukan Makanan Favoritmu \nDisini",
                 textAlign: TextAlign.center,
                 style: CustomTextStyle.size22Weight600Text(),
               ),
               const SizedBox(height: 20),
               const Text(
-                "Here You Can find a chef or dish for every \ntaste and color. Enjoy!",
+                "Cuman disini kamu bisa \nnemuin makanan apapun yang kamu mau",
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 60),
               PrimaryButton(
-                text: "Next",
+                text: "Lanjut",
                 onTap: () {
                   Navigator.pushNamed(
                     context,

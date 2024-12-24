@@ -20,18 +20,18 @@ class OnboardingSecondScreen extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               Text(
-                "Food Ninja is Where Your Comfort \nFood Lives",
+                "Sasat\nToko ",
                 textAlign: TextAlign.center,
                 style: CustomTextStyle.size22Weight600Text(),
               ),
               const SizedBox(height: 20),
               const Text(
-                "Enjoy a fast and smooth food delivery at your \ndoorstep",
+                "Nikmati Pengalaman\nPengiriman yang sangat cepat",
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 60),
               PrimaryButton(
-                text: "Next",
+                text: "Lanjut",
                 onTap: () {
                   Navigator.pushNamed(
                     context,

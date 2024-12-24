@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: "Food Ninja",
+          title: "Sasat Toko",
           theme: themeData,
           onGenerateRoute: AppRouter.onGenerateRoute,
         );
