@@ -88,7 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           const SizedBox(height: 60),
                           Text(
-                            'Sign Up For Free',
+                            'Daftar Akun Baru',
                             style: CustomTextStyle.size20Weight600Text(),
                           ),
                           const SizedBox(height: 40),
@@ -173,7 +173,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ).createShader(bounds),
                               blendMode: BlendMode.srcIn,
                               child: Text(
-                                "Already have an account?",
+                                "Sudah memiliki akun?",
                                 style: CustomTextStyle.size14Weight400Text()
                                     .copyWith(
                                   decoration: TextDecoration.underline,
@@ -185,7 +185,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 60),
                             child: PrimaryButton(
-                              text: "Create Account",
+                              text: "Buat Akun",
                               onTap: () {
                                 // print email and password
                                 debugPrint(_emailController.text.trim());

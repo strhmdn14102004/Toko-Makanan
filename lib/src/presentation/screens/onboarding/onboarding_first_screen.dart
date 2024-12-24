@@ -45,7 +45,7 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
               ),
               const SizedBox(height: 20),
               const Text(
-                "Cuman disini kamu bisa \nnemuin makanan apapun yang kamu mau",
+                "Cuman disini kamu bisa \nnemuin makanan apapun yang kamu cari",
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 60),

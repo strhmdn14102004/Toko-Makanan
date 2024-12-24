@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           const SizedBox(height: 60),
                           Text(
-                            'Login To Your Account',
+                            'Masuk ke akunmu',
                             style: CustomTextStyle.size20Weight600Text(),
                           ),
                           const SizedBox(height: 40),

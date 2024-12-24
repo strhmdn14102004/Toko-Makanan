@@ -29,7 +29,6 @@ import 'package:food_ninja/src/presentation/screens/order/cart_screen.dart';
 import 'package:food_ninja/src/presentation/screens/order/order_confirm_screen.dart';
 import 'package:food_ninja/src/presentation/screens/order/order_details_screen.dart';
 import 'package:food_ninja/src/presentation/screens/order/order_list_screen.dart';
-import 'package:food_ninja/src/presentation/screens/order/order_riwayat.dart';
 import 'package:food_ninja/src/presentation/screens/order/review_screen.dart';
 import 'package:food_ninja/src/presentation/screens/splash_screen.dart';
 
@@ -105,8 +104,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => AddRestaurantPage(),
         );
-      
-       
+
       case '/notification':
         return MaterialPageRoute(
           builder: (_) => const NotificationScreen(),
@@ -193,7 +191,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => Scaffold(
             body: Center(
-              child: Text('No route defined for ${settings.name}'),
+              child: Text('Tidak ada rute yang ditemukan untuk : ${settings.name}'),
             ),
           ),
         );

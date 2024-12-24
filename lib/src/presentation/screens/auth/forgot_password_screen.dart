@@ -57,7 +57,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             right: 25,
           ),
           child: PrimaryButton(
-            text: "Send",
+            text: "Kirim",
             onTap: () {
               BlocProvider.of<ForgotPasswordBloc>(context).add(
                 SendResetPasswordLink(
@@ -87,12 +87,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     const CustomBackButton(),
                     const SizedBox(height: 20),
                     Text(
-                      "Forgot Password?",
+                      "Lupa Password?",
                       style: CustomTextStyle.size25Weight600Text(),
                     ),
                     const SizedBox(height: 20),
                     Text(
-                      "Enter your email address to reset password",
+                      "masukan emailmu untuk melakukan reset password",
                       style: CustomTextStyle.size14Weight400Text(),
                     ),
                     const SizedBox(height: 20),
