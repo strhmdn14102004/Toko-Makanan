@@ -66,26 +66,36 @@ class OrderRepository {
     return 12000;
   }
 
-  
-
   static double _cachedDiscount = 0;
 
   static Future<double> fetchDiscount() async {
     if (cart.isEmpty) return 0;
     try {
       String? foodId = cart[0].id;
-      var foodDoc = await FirestoreDatabase().getDocument('foods', foodId!);
+      if (foodId == null) {
+        print('Error: Food ID is null.');
+        return 0;
+      }
+
+      var foodDoc = await FirestoreDatabase().getDocument('foods', foodId);
 
       if (foodDoc.exists && foodDoc.data() != null) {
         var foodData = foodDoc.data() as Map<String, dynamic>;
-        if (foodData.containsKey('discount')) {
-          _cachedDiscount = foodData['discount'].toDouble();
+
+        if (foodData.containsKey('discount') && foodData['discount'] != null) {
+          _cachedDiscount = (foodData['discount'] as num).toDouble();
+          print('Discount fetched: $_cachedDiscount');
           return _cachedDiscount;
+        } else {
+          print('Error: Discount field is missing or null.');
         }
+      } else {
+        print('Error: Document does not exist or data is null.');
       }
     } catch (e) {
       print('Error fetching discount: $e');
     }
+
     return 0;
   }
 
