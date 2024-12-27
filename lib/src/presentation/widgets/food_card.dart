@@ -4,6 +4,7 @@ import 'package:food_ninja/src/presentation/widgets/image_placeholder.dart';
 import 'package:food_ninja/src/presentation/utils/app_colors.dart';
 import 'package:food_ninja/src/presentation/utils/app_styles.dart';
 import 'package:food_ninja/src/presentation/utils/custom_text_style.dart';
+import 'package:intl/intl.dart';
 
 class FoodCard extends StatelessWidget {
   final Food food;
@@ -71,12 +72,21 @@ class FoodCard extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              "\$${food.price}",
+               formatCurrency(food.price),
               style: CustomTextStyle.size14Weight400Text(),
             ),
           ],
         ),
       ),
     );
+  }
+  
+  String formatCurrency(double value) {
+    final formatter = NumberFormat.currency(
+      locale: 'id_ID',
+      symbol: 'Rp ',
+      decimalDigits: 0,
+    );
+    return formatter.format(value);
   }
 }

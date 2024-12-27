@@ -85,7 +85,7 @@ class _AddFoodPageState extends State<AddFoodPage> {
 
         await _foodRepository.addFood(food);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Food added successfully!')),
+          const SnackBar(content: Text('Barang berhasil ditambahkan!')),
         );
         Navigator.pop(context);
       } catch (e) {
@@ -142,7 +142,7 @@ class _AddFoodPageState extends State<AddFoodPage> {
                   children: [
                     ElevatedButton(
                       onPressed: _pickImage,
-                      child: const Text('Pilih Gambar Barang'),
+                      child: const Text('Pilih Gambar'),
                     ),
                     const SizedBox(width: 16),
                     _selectedImage != null
@@ -154,7 +154,7 @@ class _AddFoodPageState extends State<AddFoodPage> {
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: _discountController,
-                  decoration: const InputDecoration(labelText: 'Diskon (%)'),
+                  decoration: const InputDecoration(labelText: 'Diskon Rupiah'),
                   keyboardType: TextInputType.number,
                 ),
                 const SizedBox(height: 16),

@@ -24,7 +24,7 @@ class SearchField extends StatelessWidget {
         decoration: InputDecoration(
           fillColor: AppColors.secondaryLightColor.withOpacity(0.1),
           filled: true,
-          hintText: "What do you want to order?",
+          hintText: "Apa yang lagi mau kamu order?",
           hintStyle: CustomTextStyle.size14Weight400Text(
             AppColors.secondaryDarkColor.withOpacity(0.4),
           ).copyWith(

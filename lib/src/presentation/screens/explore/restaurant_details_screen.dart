@@ -165,7 +165,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
                                   ).createShader(rect);
                                 },
                                 child: Text(
-                                  'Popular',
+                                  'Populer',
                                   style: CustomTextStyle.size14Weight400Text(
                                     Colors.white,
                                   ),
@@ -228,14 +228,14 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
                             builder: (context, state) {
                               if (state is OrderCountFetched) {
                                 return Text(
-                                  "${state.count} ${state.count == 1 ? "Order" : "Orders"}",
+                                  "${state.count} ${state.count == 1 ? "Pesanan" : "Pesanan"}",
                                   style: CustomTextStyle.size14Weight400Text(
                                     AppColors().secondaryTextColor,
                                   ),
                                 );
                               }
                               return Text(
-                                "0 Orders",
+                                "0 Pesanan",
                                 style: CustomTextStyle.size14Weight400Text(
                                   AppColors().secondaryTextColor,
                                 ),
@@ -255,7 +255,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
                             )
                           : Center(
                               child: Text(
-                                "No description available",
+                                "Tidak ada deskripsi",
                                 style: CustomTextStyle.size14Weight400Text(
                                   AppColors().secondaryTextColor,
                                 ),
@@ -265,7 +265,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
 
                       // menu
                       Text(
-                        "Menu",
+                        "Produk",
                         style: CustomTextStyle.size18Weight600Text(),
                       ),
                       const SizedBox(height: 20),
@@ -294,7 +294,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
                                 )
                               : Center(
                                   child: Text(
-                                    "No foods available",
+                                    "Tidak ada produk tersedia",
                                     style: CustomTextStyle.size14Weight400Text(
                                       AppColors().secondaryTextColor,
                                     ),
@@ -306,7 +306,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
 
                       // testimonials
                       Text(
-                        "Testimonials",
+                        "Ulasan",
                         style: CustomTextStyle.size18Weight600Text(),
                       ),
                       const SizedBox(height: 20),

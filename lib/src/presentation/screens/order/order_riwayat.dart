@@ -50,7 +50,7 @@ class _OrderPageState extends State<OrderPage> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Order Details"),
+          title: const Text("Detail Pesanan"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -94,8 +94,8 @@ class _OrderPageState extends State<OrderPage> {
                           fit: BoxFit.cover,
                         ),
                         title: Text(food.name),
-                        subtitle: Text("Quantity: ${food.quantity}"),
-                        trailing: Text("Price: Rp ${food.price * food.quantity}"),
+                        subtitle: Text("Kuantitas: ${food.quantity}"),
+                        trailing: Text("Harga: Rp ${food.price * food.quantity}"),
                       ),
                     );
                   },
@@ -107,15 +107,36 @@ class _OrderPageState extends State<OrderPage> {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
-                Text("Subtotal: Rp ${widget.order.subtotal}"),
-                Text("Biaya Perjalanan: Rp ${widget.order.deliveryFee}"),
-                Text("Diskon: Rp ${widget.order.discount}"),
-                Text(
-                  "Total: Rp ${widget.order.total}",
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  children: [
+                    Text("Subtotal : "),
+                    Text(formatCurrency(widget.order.subtotal)),  
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text("Biaya Perjalanan : "),
+                    Text(formatCurrency(widget.order.deliveryFee)),  
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text("Diskon : "),
+                    Text(formatCurrency(widget.order.discount)),  
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Total : ",
+
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(formatCurrency(widget.order.total)),  
+                  ],
                 ),
                 const Divider(),
                 const SizedBox(height: 8),
@@ -163,5 +184,14 @@ class _OrderPageState extends State<OrderPage> {
         ),
       ),
     );
+  }
+  
+ String formatCurrency(double value) {
+    final formatter = NumberFormat.currency(
+      locale: 'id_ID',
+      symbol: 'Rp ',
+      decimalDigits: 0,
+    );
+    return formatter.format(value);
   }
 }

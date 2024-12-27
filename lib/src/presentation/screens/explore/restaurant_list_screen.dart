@@ -82,7 +82,7 @@ class _RestaurantListScreenState extends State<RestaurantListScreen> {
                             const CustomBackButton(),
                             const SizedBox(height: 20),
                             Text(
-                              "Restaurants",
+                              "Toko",
                               style: CustomTextStyle.size25Weight600Text(),
                             ),
                             const SizedBox(height: 20),

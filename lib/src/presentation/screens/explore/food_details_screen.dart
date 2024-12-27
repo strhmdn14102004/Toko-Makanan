@@ -8,14 +8,15 @@ import 'package:food_ninja/src/bloc/profile/profile_bloc.dart';
 import 'package:food_ninja/src/bloc/testimonial/testimonial_bloc.dart';
 import 'package:food_ninja/src/data/models/food.dart';
 import 'package:food_ninja/src/data/models/testimonial.dart';
-import 'package:food_ninja/src/presentation/widgets/bullet_point.dart';
-import 'package:food_ninja/src/presentation/widgets/buttons/primary_button.dart';
-import 'package:food_ninja/src/presentation/widgets/image_placeholder.dart';
-import 'package:food_ninja/src/presentation/widgets/buttons/like_button.dart';
-import 'package:food_ninja/src/presentation/widgets/items/testimonial_item.dart';
 import 'package:food_ninja/src/presentation/utils/app_colors.dart';
 import 'package:food_ninja/src/presentation/utils/app_styles.dart';
 import 'package:food_ninja/src/presentation/utils/custom_text_style.dart';
+import 'package:food_ninja/src/presentation/widgets/bullet_point.dart';
+import 'package:food_ninja/src/presentation/widgets/buttons/like_button.dart';
+import 'package:food_ninja/src/presentation/widgets/buttons/primary_button.dart';
+import 'package:food_ninja/src/presentation/widgets/image_placeholder.dart';
+import 'package:food_ninja/src/presentation/widgets/items/testimonial_item.dart';
+import 'package:intl/intl.dart';
 
 class FoodDetailsScreen extends StatefulWidget {
   final Food food;
@@ -63,7 +64,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
         bottomNavigationBar: Container(
           margin: const EdgeInsets.fromLTRB(25, 0, 25, 25),
           child: PrimaryButton(
-            text: "Add to cart",
+            text: "Tambahkan ke keranjang",
             onTap: () {
               BlocProvider.of<OrderBloc>(context).add(
                 AddToCart(widget.food),
@@ -101,7 +102,6 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                             iconSize: 100,
                           ),
                   ),
-                  //Border radius
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
@@ -163,7 +163,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                                 ).createShader(rect);
                               },
                               child: Text(
-                                'Popular',
+                                'Populer',
                                 style: CustomTextStyle.size14Weight400Text(
                                   Colors.white,
                                 ),
@@ -190,7 +190,6 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                         ],
                       ),
                     ),
-
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -202,16 +201,42 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                             style: CustomTextStyle.size27Weight600Text(),
                           ),
                         ),
-                        Text(
-                          "\$${widget.food.price}",
-                          style: CustomTextStyle.size22Weight600Text(
-                            AppColors.secondaryDarkColor,
-                          ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              formatCurrency(widget.food.price -
+                                  (widget.food.discount ?? 0.0)),
+                              style: CustomTextStyle.size22Weight600Text(
+                                AppColors.secondaryDarkColor,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "Diskon",
+                                  style: CustomTextStyle.size14Weight600Text(
+                                    Colors.grey,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  formatCurrency(widget.food.price ?? 0.0),
+                                  style: CustomTextStyle.size14Weight600Text(
+                                    Colors.grey,
+                                  ).copyWith(
+                                      decoration: TextDecoration.lineThrough),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ],
                     ),
                     const SizedBox(height: 20),
-
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -238,14 +263,14 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                           builder: (context, state) {
                             if (state is OrderCountFetched) {
                               return Text(
-                                "${state.count} ${state.count == 1 ? "Order" : "Orders"}",
+                                "${state.count} ${state.count == 1 ? "Pesanan" : "Pesanan"}",
                                 style: CustomTextStyle.size14Weight400Text(
                                   AppColors().secondaryTextColor,
                                 ),
                               );
                             }
                             return Text(
-                              "0 Orders",
+                              "0 Pesanan",
                               style: CustomTextStyle.size14Weight400Text(
                                 AppColors().secondaryTextColor,
                               ),
@@ -255,8 +280,6 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                       ],
                     ),
                     const SizedBox(height: 24),
-
-                    // description
                     widget.food.description != null &&
                             widget.food.description!.isNotEmpty
                         ? Text(
@@ -265,17 +288,15 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                           )
                         : Center(
                             child: Text(
-                              "No description available",
+                              "Tidak ada deskripsi yang tersedia",
                               style: CustomTextStyle.size14Weight400Text(
                                 AppColors().secondaryTextColor,
                               ),
                             ),
                           ),
                     const SizedBox(height: 20),
-
-                    // ingredients
                     Text(
-                      "Ingredients",
+                      "Detail Bahan Produk",
                       style: CustomTextStyle.size18Weight600Text(),
                     ),
                     const SizedBox(height: 10),
@@ -309,10 +330,8 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                             ),
                           ),
                     const SizedBox(height: 20),
-
-                    // testimonials
                     Text(
-                      "Testimonials",
+                      "Ulasan",
                       style: CustomTextStyle.size18Weight600Text(),
                     ),
                     const SizedBox(height: 20),
@@ -321,7 +340,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
                         if (testimonials.isEmpty) {
                           return Center(
                             child: Text(
-                              "No testimonials available",
+                              "Tidak ada ulasan yang tersedia",
                               style: CustomTextStyle.size14Weight400Text(
                                 AppColors().secondaryTextColor,
                               ),
@@ -350,5 +369,14 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
         ),
       ),
     );
+  }
+
+  String formatCurrency(double value) {
+    final formatter = NumberFormat.currency(
+      locale: 'id_ID',
+      symbol: 'Rp ',
+      decimalDigits: 0,
+    );
+    return formatter.format(value);
   }
 }

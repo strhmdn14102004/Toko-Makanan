@@ -11,12 +11,12 @@ import 'package:food_ninja/src/data/repositories/order_repository.dart';
 import 'package:food_ninja/src/presentation/screens/chat/chat_list_screen.dart';
 import 'package:food_ninja/src/presentation/screens/home/profile_screen.dart';
 import 'package:food_ninja/src/presentation/screens/order/order_list_screen.dart';
-import 'package:food_ninja/src/presentation/widgets/items/food_item.dart';
-import 'package:food_ninja/src/presentation/widgets/items/restaurant_item.dart';
-import 'package:food_ninja/src/presentation/widgets/search_filter_widget.dart';
 import 'package:food_ninja/src/presentation/utils/app_colors.dart';
 import 'package:food_ninja/src/presentation/utils/app_styles.dart';
 import 'package:food_ninja/src/presentation/utils/custom_text_style.dart';
+import 'package:food_ninja/src/presentation/widgets/items/food_item.dart';
+import 'package:food_ninja/src/presentation/widgets/items/restaurant_item.dart';
+import 'package:food_ninja/src/presentation/widgets/search_filter_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -59,7 +59,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Hide keyboard when user taps outside an input field
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
@@ -254,12 +253,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(width: 20),
                         Expanded(
                           child: Column(
-                            // text and button
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Special Offer for\nthis month",
+                                "Penawaran spesial\nbulan ini",
                                 style: CustomTextStyle.size16Weight500Text(
                                   Colors.white,
                                 ),
@@ -291,7 +289,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ).createShader(rect);
                                   },
                                   child: Text(
-                                    "Buy Now",
+                                    "Beli Sekarang",
                                     style: CustomTextStyle.size14Weight400Text(
                                       Colors.white,
                                     ),
@@ -309,7 +307,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Popular Restaurants",
+                        "Toko Yang Paling Populer",
                         style: CustomTextStyle.size16Weight400Text(),
                       ),
                       TextButton(
@@ -318,7 +316,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         style: TextButton.styleFrom(),
                         child: Text(
-                          "View More",
+                          "Lihat lainnya",
                           style: CustomTextStyle.size14Weight400Text(
                             AppColors.secondaryDarkColor,
                           ),
@@ -351,11 +349,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       }
 
-                      // return list of restaurants horizontally, only 2 items
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          //  if not empty show restaurant item
                           if (_restaurants.isNotEmpty)
                             Expanded(
                               child: RestaurantItem(
@@ -378,7 +374,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Popular Foods",
+                        "Barang Populer",
                         style: CustomTextStyle.size16Weight400Text(),
                       ),
                       TextButton(
@@ -387,7 +383,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         style: TextButton.styleFrom(),
                         child: Text(
-                          "View More",
+                          "Lihat lainnya",
                           style: CustomTextStyle.size14Weight400Text(
                             AppColors.secondaryDarkColor,
                           ),

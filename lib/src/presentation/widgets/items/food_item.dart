@@ -5,6 +5,7 @@ import 'package:food_ninja/src/presentation/utils/app_colors.dart';
 import 'package:food_ninja/src/presentation/utils/app_styles.dart';
 import 'package:food_ninja/src/presentation/utils/custom_text_style.dart';
 import 'package:food_ninja/src/presentation/widgets/image_placeholder.dart';
+import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 
 class FoodItem extends StatefulWidget {
@@ -106,17 +107,40 @@ class _FoodItemState extends State<FoodItem> {
                 ),
               ),
               const SizedBox(width: 10),
-              Text(
-                "\$${widget.food.price}",
-                style: CustomTextStyle.size14Weight600Text(
-                  AppColors.secondaryDarkColor,
-                ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    formatCurrency(
+                        widget.food.price - (widget.food.discount ?? 0.0)),
+                    style: CustomTextStyle.size16Weight500Text(
+                      AppColors.secondaryDarkColor,
+                    ),
+                  ),
+                  Text(
+                    formatCurrency(widget.food.price),
+                    style: CustomTextStyle.size14Weight600Text(
+                      Colors.grey,
+                    ).copyWith(decoration: TextDecoration.lineThrough),
+                  ),
+                ],
               ),
+              const SizedBox(width: 10),
             ],
           ),
         ),
       ),
     );
+  }
+
+  String formatCurrency(double value) {
+    final formatter = NumberFormat.currency(
+      locale: 'id_ID',
+      symbol: 'Rp ',
+      decimalDigits: 0,
+    );
+    return formatter.format(value);
   }
 }
 

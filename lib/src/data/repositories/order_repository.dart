@@ -12,11 +12,10 @@ class OrderRepository {
 
   static final Box<dynamic> box = Hive.box('myBox');
 
-  // load cart from hive
   static void loadCart() {
     if (box.containsKey('cart')) {
       final List<Food> cartList = List<Food>.from(box.get('cart'));
-      
+
       cart.clear();
       for (Food item in cartList) {
         cart.add(item);
@@ -24,7 +23,6 @@ class OrderRepository {
     }
   }
 
-  // update cart in hive
   void updateHive() {
     box.put('cart', cart);
   }
@@ -56,7 +54,6 @@ class OrderRepository {
     updateHive();
   }
 
-  // subtotal
   static double get subtotal {
     double total = 0;
     for (var food in cart) {
@@ -65,17 +62,35 @@ class OrderRepository {
     return total;
   }
 
-  // delivery fee
   static double get deliveryFee {
+    return 12000;
+  }
+
+  
+
+  static double _cachedDiscount = 0;
+
+  static Future<double> fetchDiscount() async {
+    if (cart.isEmpty) return 0;
+    try {
+      String? foodId = cart[0].id;
+      var foodDoc = await FirestoreDatabase().getDocument('foods', foodId!);
+
+      if (foodDoc.exists && foodDoc.data() != null) {
+        var foodData = foodDoc.data() as Map<String, dynamic>;
+        if (foodData.containsKey('discount')) {
+          _cachedDiscount = foodData['discount'].toDouble();
+          return _cachedDiscount;
+        }
+      }
+    } catch (e) {
+      print('Error fetching discount: $e');
+    }
     return 0;
   }
 
-  // discount
-  static double get discount {
-    return 0;
-  }
+  static double get discount => _cachedDiscount;
 
-  // total
   static double get total {
     return subtotal + deliveryFee - discount;
   }
@@ -96,7 +111,6 @@ class OrderRepository {
           : PaymentMethod.paypal,
     );
 
-    // firestore
     await _db.addDocument(
       'orders',
       order.toMap(),
@@ -123,7 +137,6 @@ class OrderRepository {
       orders.add(order);
     }
 
-    // sort by date
     orders.sort((a, b) => b.createdAt.compareTo(a.createdAt));
 
     return orders;

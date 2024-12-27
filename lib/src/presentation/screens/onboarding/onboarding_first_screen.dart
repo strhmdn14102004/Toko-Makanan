@@ -39,13 +39,13 @@ class _OnboardingFirstScreenState extends State<OnboardingFirstScreen> {
               ),
               const SizedBox(height: 40),
               Text(
-                "Temukan Makanan Favoritmu \nDisini",
+                "Temukan Barang Favoritmu \nDisini",
                 textAlign: TextAlign.center,
                 style: CustomTextStyle.size22Weight600Text(),
               ),
               const SizedBox(height: 20),
               const Text(
-                "Cuman disini kamu bisa \nnemuin makanan apapun yang kamu cari",
+                "Cuman disini kamu bisa \nnemuin barang apapun yang kamu cari",
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 60),

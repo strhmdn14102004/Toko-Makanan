@@ -26,7 +26,7 @@ class OnboardingSecondScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               const Text(
-                "Nikmati Pengalaman\nPengiriman makanan yang sangat cepat",
+                "Nikmati Pengalaman\nPengiriman barang yang sangat cepat",
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 60),

@@ -7,6 +7,7 @@ import 'package:food_ninja/src/presentation/utils/app_styles.dart';
 import 'package:food_ninja/src/presentation/utils/custom_text_style.dart';
 import 'package:food_ninja/src/presentation/widgets/buttons/back_button.dart';
 import 'package:food_ninja/src/presentation/widgets/image_placeholder.dart';
+import 'package:intl/intl.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
   final Order order;
@@ -49,7 +50,7 @@ class OrderDetailsScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '\$${order.subtotal}',
+                      formatCurrency(order.subtotal),
                         style: CustomTextStyle.size16Weight400Text(
                           Colors.white,
                         ),
@@ -60,13 +61,13 @@ class OrderDetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Delivery fee',
+                        'Ongkos Kirim',
                         style: CustomTextStyle.size16Weight400Text(
                           Colors.white,
                         ),
                       ),
                       Text(
-                        '\$${order.deliveryFee}',
+                        formatCurrency(order.deliveryFee),
                         style: CustomTextStyle.size16Weight400Text(
                           Colors.white,
                         ),
@@ -77,13 +78,13 @@ class OrderDetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Discount',
+                        'Diskon',
                         style: CustomTextStyle.size16Weight400Text(
                           Colors.white,
                         ),
                       ),
                       Text(
-                        '\$${order.discount}',
+                          formatCurrency(order.discount),
                         style: CustomTextStyle.size16Weight400Text(
                           Colors.white,
                         ),
@@ -101,7 +102,7 @@ class OrderDetailsScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '\$${order.total.toStringAsFixed(2)}',
+                       formatCurrency(order.total),
                         style: CustomTextStyle.size22Weight600Text(
                           Colors.white,
                         ),
@@ -137,7 +138,7 @@ class OrderDetailsScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     Text(
-                      "Items",
+                      "Barang Pesanan",
                       style: CustomTextStyle.size18Weight600Text(),
                     ),
                     const SizedBox(height: 10),
@@ -213,7 +214,7 @@ class OrderDetailsScreen extends StatelessWidget {
                                           ).createShader(rect);
                                         },
                                         child: Text(
-                                          "\$${item.price.toStringAsFixed(2)}",
+                                          formatCurrency(item.price),
                                           style: CustomTextStyle
                                               .size18Weight600Text(
                                             Colors.white,
@@ -243,5 +244,13 @@ class OrderDetailsScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+  String formatCurrency(double value) {
+    final formatter = NumberFormat.currency(
+      locale: 'id_ID',
+      symbol: 'Rp ',
+      decimalDigits: 0,
+    );
+    return formatter.format(value);
   }
 }

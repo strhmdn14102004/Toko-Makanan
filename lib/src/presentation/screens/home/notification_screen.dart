@@ -30,18 +30,18 @@ class NotificationScreen extends StatelessWidget {
                     const CustomBackButton(),
                     const SizedBox(height: 20),
                     Text(
-                      "Notification",
+                      "Notifikasi",
                       style: CustomTextStyle.size25Weight600Text(),
                     ),
                     const SizedBox(height: 20),
                     NotificationItem(
-                      content: "Your order has been taken by the driver",
+                      content: "Pesananmu berhasil diproses",
                       time: DateTime.now(),
                       isSuccess: true,
                     ),
                     const SizedBox(height: 20),
                     NotificationItem(
-                      content: "Error while processing your order",
+                      content: "Gagal memproses pesananmu",
                       time: DateTime.now(),
                       isSuccess: false,
                     ),
