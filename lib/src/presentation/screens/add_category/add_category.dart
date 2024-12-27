@@ -44,7 +44,7 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Category'),
+        title: Text('Tambahkan Kategori'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -55,12 +55,12 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
               TextFormField(
                 controller: _nameController,
                 decoration: InputDecoration(
-                  labelText: 'Category Name',
+                  labelText: 'Nama Kategori',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter a category name';
+                    return 'Tolong masukan nama kategori';
                   }
                   return null;
                 },
@@ -80,7 +80,7 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
                   }
                   return ElevatedButton(
                     onPressed: () => _submitCategory(context),
-                    child: Text('Add Category'),
+                    child: Text('Tambah Kategori'),
                   );
                 },
               ),

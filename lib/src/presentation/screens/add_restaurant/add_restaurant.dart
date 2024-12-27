@@ -46,17 +46,17 @@ class _AddRestaurantPageState extends State<AddRestaurantPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Add Restaurant')),
+      appBar: AppBar(title: Text('Tambahkan Data Toko Baru')),
       body: BlocListener<RestaurantBloc, RestaurantState>(
         listener: (context, state) {
           if (state is RestaurantAddedSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Restaurant added successfully')),
+              SnackBar(content: Text('Toko added successfully')),
             );
             Navigator.pop(context);
           } else if (state is RestaurantError) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Failed to add restaurant')),
+              SnackBar(content: Text('Failed to add toko')),
             );
           }
         },
@@ -70,19 +70,19 @@ class _AddRestaurantPageState extends State<AddRestaurantPage> {
                 children: [
                   TextFormField(
                     controller: _nameController,
-                    decoration: InputDecoration(labelText: 'Restaurant Name'),
+                    decoration: InputDecoration(labelText: 'Nama Toko'),
                     validator: (value) =>
-                        value!.isEmpty ? 'Name cannot be empty' : null,
+                        value!.isEmpty ? 'Nama toko tidak boleh kosong' : null,
                   ),
                   TextFormField(
                     controller: _locationController,
-                    decoration: InputDecoration(labelText: 'Location'),
+                    decoration: InputDecoration(labelText: 'Lokasi Toko'),
                     validator: (value) =>
-                        value!.isEmpty ? 'Location cannot be empty' : null,
+                        value!.isEmpty ? 'Lokasi Toko Tidak Boleh Dikosongkan' : null,
                   ),
                   TextFormField(
                     controller: _descriptionController,
-                    decoration: InputDecoration(labelText: 'Description'),
+                    decoration: InputDecoration(labelText: 'Deskripsi Toko'),
                     maxLines: 3,
                   ),
                   const SizedBox(height: 16.0),
@@ -100,7 +100,7 @@ class _AddRestaurantPageState extends State<AddRestaurantPage> {
                   const SizedBox(height: 16.0),
                   ElevatedButton(
                     onPressed: _submitForm,
-                    child: Text('Add Restaurant'),
+                    child: Text('Tambahkan Data Toko'),
                   ),
                 ],
               ),

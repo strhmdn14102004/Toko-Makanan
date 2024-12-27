@@ -89,12 +89,13 @@ class SettingsScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Upload Data Makanan",
+                                "Upload Data Barang",
                                 style: CustomTextStyle.size16Weight600Text(),
                               ),
                               Icon(
-                                Icons.food_bank_rounded,
-                                size: 40,color: Colors.teal,
+                                Icons.wallet_giftcard_outlined,
+                                size: 40,
+                                color: Colors.teal,
                               ),
                             ],
                           ),
@@ -112,13 +113,10 @@ class SettingsScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Upload Data Restoran",
+                                "Upload Data Toko",
                                 style: CustomTextStyle.size16Weight600Text(),
                               ),
-                              Icon(
-                                Icons.home_filled,
-                                size: 28,
-                              ),
+                              Icon(Icons.warehouse_rounded, size: 40),
                             ],
                           ),
                         ),
@@ -140,7 +138,7 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Icon(
                                 Icons.category_rounded,
-                                size: 28,
+                                size: 40,
                                 color: Colors.orange,
                               ),
                             ],
@@ -157,7 +155,11 @@ class SettingsScreen extends StatelessWidget {
                           "Log Out",
                           style: CustomTextStyle.size16Weight600Text(),
                         ),
-                        trailing: const Icon(Icons.logout,color: Colors.red),
+                        trailing: const Icon(
+                          Icons.logout,
+                          color: Colors.red,
+                          size: 40,
+                        ),
                         onTap: () {
                           showDialog(
                             context: context,

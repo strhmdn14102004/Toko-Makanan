@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:food_ninja/src/data/models/Chat.dart';
 import 'package:food_ninja/src/data/models/message.dart';
 import 'package:hive/hive.dart';
 
@@ -63,15 +62,6 @@ class ChatRepository {
 
     return groupedMessages;
   }
-
-   Stream<List<Chat>> fetchChatsForCurrentUser(DocumentReference currentUserRef) {
-    return FirebaseFirestore.instance
-        .collection('chats')
-        .where('sender', isEqualTo: currentUserRef)
-        .snapshots()
-        .map((snapshot) => snapshot.docs.map((doc) => Chat.fromFirestore(doc)).toList());
-  }
-
 
   // fetch messages between two users
   Future<List<Message>> fetchMessagesBetweenTwoUsers(String otherUserId) async {

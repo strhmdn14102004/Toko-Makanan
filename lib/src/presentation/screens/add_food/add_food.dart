@@ -100,7 +100,7 @@ class _AddFoodPageState extends State<AddFoodPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Food'),
+        title: const Text('Tambah Data Barang'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -112,49 +112,49 @@ class _AddFoodPageState extends State<AddFoodPage> {
               children: [
                 TextFormField(
                   controller: _nameController,
-                  decoration: const InputDecoration(labelText: 'Food Name'),
+                  decoration: const InputDecoration(labelText: 'Nama Barang'),
                   validator: (value) =>
-                      value!.isEmpty ? 'Please enter food name' : null,
+                      value!.isEmpty ? 'Masukan nama barang' : null,
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: _priceController,
-                  decoration: const InputDecoration(labelText: 'Price'),
+                  decoration: const InputDecoration(labelText: 'Harga'),
                   keyboardType: TextInputType.number,
                   validator: (value) =>
-                      value!.isEmpty ? 'Please enter price' : null,
+                      value!.isEmpty ? 'Tolong masukan harga barang' : null,
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: _ingredientsController,
                   decoration: const InputDecoration(
-                      labelText: 'Ingredients (comma separated)'),
+                      labelText: 'Bahan-bahan (pisahkan dengan koma)'),
                   validator: (value) =>
-                      value!.isEmpty ? 'Please enter ingredients' : null,
+                      value!.isEmpty ? 'Tolong masukan bahan bahan' : null,
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: _descriptionController,
-                  decoration: const InputDecoration(labelText: 'Description'),
+                  decoration: const InputDecoration(labelText: 'Deskripsi'),
                 ),
                 const SizedBox(height: 16),
                 Row(
                   children: [
                     ElevatedButton(
                       onPressed: _pickImage,
-                      child: const Text('Pick Image'),
+                      child: const Text('Pilih Gambar Barang'),
                     ),
                     const SizedBox(width: 16),
                     _selectedImage != null
-                        ? const Text('Image Selected',
+                        ? const Text('Gambar Terpilih',
                             style: TextStyle(color: Colors.green))
-                        : const Text('No image selected'),
+                        : const Text('Tidak ada gambar yang dipilih'),
                   ],
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: _discountController,
-                  decoration: const InputDecoration(labelText: 'Discount (%)'),
+                  decoration: const InputDecoration(labelText: 'Diskon (%)'),
                   keyboardType: TextInputType.number,
                 ),
                 const SizedBox(height: 16),
@@ -165,7 +165,7 @@ class _AddFoodPageState extends State<AddFoodPage> {
                       return const CircularProgressIndicator();
                     }
                     return DropdownButtonFormField<DocumentReference>(
-                      decoration: const InputDecoration(labelText: 'Category'),
+                      decoration: const InputDecoration(labelText: 'Kategori Barang'),
                       items: snapshot.data!
                           .map(
                             (doc) => DropdownMenuItem(
@@ -178,7 +178,7 @@ class _AddFoodPageState extends State<AddFoodPage> {
                         _selectedCategory = value;
                       },
                       validator: (value) =>
-                          value == null ? 'Please select a category' : null,
+                          value == null ? 'Tolong pilih kategori barang' : null,
                     );
                   },
                 ),
@@ -190,7 +190,7 @@ class _AddFoodPageState extends State<AddFoodPage> {
                       return const CircularProgressIndicator();
                     }
                     return DropdownButtonFormField<DocumentReference>(
-                      decoration: const InputDecoration(labelText: 'Restaurant'),
+                      decoration: const InputDecoration(labelText: 'Toko'),
                       items: snapshot.data!
                           .map(
                             (doc) => DropdownMenuItem(
@@ -203,14 +203,14 @@ class _AddFoodPageState extends State<AddFoodPage> {
                         _selectedRestaurant = value;
                       },
                       validator: (value) =>
-                          value == null ? 'Please select a restaurant' : null,
+                          value == null ? 'Tolong pilih asal toko barang' : null,
                     );
                   },
                 ),
                 const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: _submitForm,
-                  child: const Text('Add Food'),
+                  child: const Text('Tambahkan Barang'),
                 ),
               ],
             ),
