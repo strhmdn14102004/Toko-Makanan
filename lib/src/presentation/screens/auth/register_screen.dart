@@ -88,7 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           const SizedBox(height: 60),
                           Text(
-                            'Daftar Akun Baru',
+                            'Buat Akun Baru',
                             style: CustomTextStyle.size20Weight600Text(),
                           ),
                           const SizedBox(height: 40),

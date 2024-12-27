@@ -41,7 +41,7 @@ class FirebaseAuthService {
       case "invalid-email":
         return "Your email address appears to be malformed.";
       case "wrong-password":
-        return "Your password is wrong.";
+        return "Password yang kamu masukan kurang tepat.";
       case "user-not-found":
         return "User with this email doesn't exist.";
       case "user-disabled":

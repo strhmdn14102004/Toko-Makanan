@@ -15,6 +15,7 @@ import 'package:food_ninja/src/presentation/screens/auth/set_location_screen.dar
 import 'package:food_ninja/src/presentation/screens/auth/set_payment_screen.dart';
 import 'package:food_ninja/src/presentation/screens/auth/upload_photo_screen.dart';
 import 'package:food_ninja/src/presentation/screens/chat/chat_details_screen.dart';
+import 'package:food_ninja/src/presentation/screens/chat/new_chat.dart';
 import 'package:food_ninja/src/presentation/screens/explore/food_details_screen.dart';
 import 'package:food_ninja/src/presentation/screens/explore/food_list_screen.dart';
 import 'package:food_ninja/src/presentation/screens/explore/restaurant_details_screen.dart';
@@ -179,6 +180,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const ChatListScreen(),
         );
+     
 
       case '/chats/detail':
         return MaterialPageRoute(
@@ -191,7 +193,8 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => Scaffold(
             body: Center(
-              child: Text('Tidak ada rute yang ditemukan untuk : ${settings.name}'),
+              child: Text(
+                  'Tidak ada rute yang ditemukan untuk : ${settings.name}'),
             ),
           ),
         );

@@ -90,11 +90,11 @@ class SettingsScreen extends StatelessWidget {
                             children: [
                               Text(
                                 "Upload Data Makanan",
-                                style: CustomTextStyle.size16Weight400Text(),
+                                style: CustomTextStyle.size16Weight600Text(),
                               ),
                               Icon(
                                 Icons.food_bank_rounded,
-                                size: 28,
+                                size: 40,color: Colors.teal,
                               ),
                             ],
                           ),
@@ -113,7 +113,7 @@ class SettingsScreen extends StatelessWidget {
                             children: [
                               Text(
                                 "Upload Data Restoran",
-                                style: CustomTextStyle.size16Weight400Text(),
+                                style: CustomTextStyle.size16Weight600Text(),
                               ),
                               Icon(
                                 Icons.home_filled,
@@ -136,11 +136,12 @@ class SettingsScreen extends StatelessWidget {
                             children: [
                               Text(
                                 "Upload Data Category",
-                                style: CustomTextStyle.size16Weight400Text(),
+                                style: CustomTextStyle.size16Weight600Text(),
                               ),
                               Icon(
                                 Icons.category_rounded,
                                 size: 28,
+                                color: Colors.orange,
                               ),
                             ],
                           ),
@@ -154,9 +155,9 @@ class SettingsScreen extends StatelessWidget {
                         contentPadding: EdgeInsets.zero,
                         title: Text(
                           "Log Out",
-                          style: CustomTextStyle.size16Weight400Text(),
+                          style: CustomTextStyle.size16Weight600Text(),
                         ),
-                        trailing: const Icon(Icons.logout),
+                        trailing: const Icon(Icons.logout,color: Colors.red),
                         onTap: () {
                           showDialog(
                             context: context,

@@ -5,11 +5,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_ninja/src/bloc/chat/chat_bloc.dart';
 import 'package:food_ninja/src/data/models/message.dart';
 import 'package:food_ninja/src/data/models/user.dart';
+import 'package:food_ninja/src/data/repositories/chat_repository.dart';
 import 'package:food_ninja/src/data/services/firestore_db.dart';
-import 'package:food_ninja/src/presentation/widgets/image_placeholder.dart';
+import 'package:food_ninja/src/presentation/screens/chat/new_chat.dart';
 import 'package:food_ninja/src/presentation/utils/app_colors.dart';
 import 'package:food_ninja/src/presentation/utils/app_styles.dart';
 import 'package:food_ninja/src/presentation/utils/custom_text_style.dart';
+import 'package:food_ninja/src/presentation/widgets/image_placeholder.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
@@ -51,11 +53,32 @@ class _ChatListScreenState extends State<ChatListScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(25),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Chat",
-                      style: CustomTextStyle.size25Weight600Text(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Chat",
+                          style: CustomTextStyle.size25Weight600Text(),
+                        ),
+                        FloatingActionButton(
+                          onPressed: () {
+                           Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SelectUserPage(
+              onUserSelected: (selectedUserRef) {
+                _startChat(selectedUserRef);
+              },
+            ),
+          ),
+        );
+                          },
+                          child: const Icon(Icons.add),
+                        ),
+                      ],
                     ),
 
                     const SizedBox(height: 20),
@@ -83,7 +106,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                             return SizedBox(
                               height: MediaQuery.of(context).size.height * 0.7,
                               child: const Center(
-                                child: Text("No chats yet"),
+                                child: Text("Belum ada chat yang tersedia"),
                               ),
                             );
                           }
@@ -114,6 +137,21 @@ class _ChatListScreenState extends State<ChatListScreen> {
       ),
     );
   }
+}
+
+Future<void> _startChat(DocumentReference selectedUserRef) async {
+  final box = Hive.box('myBox');
+  final currentUserRef =
+      FirebaseFirestore.instance.doc('/users/${box.get('id')}');
+
+  final newMessage = Message(
+    sender: currentUserRef,
+    receiver: selectedUserRef,
+    text: "Hai!",
+    createdAt: DateTime.now(),
+  );
+
+  await ChatRepository().sendMessage(newMessage);
 }
 
 class ChatItem extends StatefulWidget {

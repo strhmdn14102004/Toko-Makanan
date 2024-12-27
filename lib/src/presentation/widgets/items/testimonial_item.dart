@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_ninja/src/presentation/widgets/image_placeholder.dart';
 import 'package:food_ninja/src/presentation/utils/app_colors.dart';
 import 'package:food_ninja/src/presentation/utils/app_styles.dart';
 import 'package:food_ninja/src/presentation/utils/custom_text_style.dart';
 import 'package:food_ninja/src/presentation/utils/helpers.dart';
+import 'package:food_ninja/src/presentation/widgets/image_placeholder.dart';
 import 'package:shimmer/shimmer.dart';
+
 import '../../../data/models/testimonial.dart';
 
 class TestimonialItem extends StatefulWidget {
@@ -27,16 +28,20 @@ class _TestimonialItemState extends State<TestimonialItem> {
   @override
   void initState() {
     super.initState();
-    // get user data from reference
     _getUserData();
   }
 
   Future<void> _getUserData() async {
     final DocumentSnapshot userDoc = await widget.testimonial.user.get();
-    final Map<String, dynamic> userData =
-        userDoc.data() as Map<String, dynamic>;
-    userEmail = userData['email'] as String;
-    userImage = userData['image'] as String?;
+    final Map<String, dynamic>? userData =
+        userDoc.data() as Map<String, dynamic>?;
+    if (userData != null) {
+      userEmail = userData['email'] as String;
+      userImage = userData['image'] as String?;
+    } else {
+      userEmail = 'Hidden User';
+      userImage = null;
+    }
   }
 
   @override
@@ -180,7 +185,6 @@ class _TestimonialItemState extends State<TestimonialItem> {
   }
 }
 
-// testimonial shimmer
 class TestimonialShimmerItem extends StatelessWidget {
   const TestimonialShimmerItem({
     super.key,
